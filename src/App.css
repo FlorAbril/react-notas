@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  width: 50%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  margin-top: 1em;
+}
+
+li{
+  border: 1px solid gray;
+    padding: 0.5em;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 0.3em;
+
+}
+
+p{
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  word-break: break-word;
+}
+
+.div-btn{
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3em;
+
+}
+
+textarea{
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.nueva-nota > *{
+ cursor: pointer;
+ transition: color ease-in 200ms;
+}
+.nueva-nota > *:hover{
+ color: blue;
+}
+
+svg{
+  cursor: pointer;
+  transition: fill ease-in 200ms;
+}
+
+svg:hover{
+  fill: blue;
+}
+
+button{
+  background-color: rgb(255 255 255);
+  border: 1px solid;
+  border-radius: 1.3em;
+  cursor: pointer;
+  transition: background-color ease-out 500ms;
+}
+
+button:hover{
+  background-color: rgb(70, 70, 218);
+ color:  rgb(255 255 255);
+}
