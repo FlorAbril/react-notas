@@ -1,22 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./App.css";
 import Nota from "./components/Nota";
 import InputNota from "./components/InputNota";
+import {reducer, initialState} from './notasReducer'
+
 
 function App() {
-  const [notas, setNotas] = useState(JSON.parse(localStorage.getItem('notas')) )
-  
+  const[notas,dispatch] = useReducer(reducer,initialState)
+
   useEffect(()=>{
     localStorage.setItem('notas',JSON.stringify(notas))
-   
   },[notas])
 
   
   return (
     <div className="App">
         <ul>
-          <InputNota setNotas={setNotas}/>  
-          { notas.length > 0 ?  notas.map(nota => <Nota notas={notas} detail={nota.detail} id={nota.id} setNotas={setNotas} key={nota.id}></Nota>)  
+          <InputNota dispatch={dispatch}/>  
+          { notas.length > 0 ?  
+              notas.map(({id,detail}) => 
+                <Nota 
+                  dispatch ={dispatch}
+                  notas={notas} nota={{detail,id}}  key={id}>
+                </Nota>
+              )  
             : <label>No hay notas</label>
           }
 

@@ -1,36 +1,51 @@
 import React from 'react'
 import { useState } from 'react'
 import BotonIcon from './BotonIcon'
+import { ACTIONS } from '../notasReducer'
 
 
-
-export default function InputNota({setNotas}){
+export default function InputNota({dispatch}){
   const [detail, setDetail] = useState('')
-  const [editandoNota, setEditandoNota] = useState(false)
-  const handleChange = (e) =>{
-    setDetail(e.target.value)
-  }
-  const handleSubmit = (e) =>{
-    e.preventDefault()
+  const [escribiendo, setEscribiendo] = useState(false)
+ 
+  const crearNota = (detail) => {
     const id = Math.floor(Math.random()*Number.MAX_SAFE_INTEGER) 
-    setNotas(notas => [{detail, id},...notas])
-    setEditandoNota(!editandoNota)
+    const nuevaNota = {id,detail}
+    dispatch({ type:ACTIONS.crear, payload:nuevaNota })
+  }
+
+  const handleSubmit = () =>{
+    crearNota(detail)
+    setEscribiendo(false)
     setDetail('')
   }
+
   return (
     <>
-      {editandoNota ? 
+      {escribiendo ? 
           <li>
-            <textarea value={detail} onChange={handleChange} rows="5" placeholder='Escribe una nota...' required></textarea>
+            <textarea value={detail} 
+              onChange={(e) => {setDetail(e.target.value)}} 
+              rows="5" placeholder='Escribe una nota...' required
+            />
+
             <div className='div-btn'>
               <button onClick={handleSubmit}>Guardar</button>
-              <button onClick={()=>setEditandoNota(!editandoNota)}>Cancelar</button>
+              <button 
+                onClick={()=>{
+                  setDetail('')
+                  setEscribiendo(false)}}>
+                Cancelar
+              </button>
             </div>
           </li>
         :
-          <div className='nueva-nota' onClick={()=>setEditandoNota(!editandoNota)}>
+          <div className='nueva-nota'
+            onClick={()=>setEscribiendo(true)}>
+
             <BotonIcon tipo='añadir' width='1.5em' height='auto'/>
             <label style={{'vertical-align': 'top'}}> Añadir nota</label>
+
           </div>
         
       
