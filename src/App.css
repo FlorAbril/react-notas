@@ -31,11 +31,14 @@ li{
   border: 1px solid gray;
     padding: 0.5em;
     border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 0.3em;
-
+   display: flex;
+      /*justify-content: space-between;
+    column-gap: 0.3em; */
+    flex-direction: column;
+    row-gap: 0.3em;
 }
+
+
 
 p{
   margin: 0;
@@ -46,13 +49,22 @@ p{
 
 .div-btn{
   display: flex;
-  flex-direction: column;
-  row-gap: 0.3em;
-  justify-content: space-around;
+  flex-direction: row;
+  /* row-gap: 0.3em;
+  justify-content: space-around; */
+  justify-content: center;
+  column-gap: 0.3em;
+
+}
+
+.div-icons{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 textarea{
-  width: 100%;
+  /* width: 100%; */
   font-family: sans-serif;
 }
 
