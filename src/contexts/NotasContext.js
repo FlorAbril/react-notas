@@ -11,7 +11,7 @@ const NotasProvider = ({children}) => {
     },[notas])
 
     return (
-        <NotasContext.Provider value={{ notas , dispatch }}>
+        <NotasContext.Provider value={[notas, dispatch]}>
             {children}
         </NotasContext.Provider>
     )

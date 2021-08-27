@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
+import NotasContext from '../contexts/NotasContext';
+import { ACTIONS } from "../notasReducer";
 
-export default function EditNota({setEditandoNota,notas,nota,dispatch,ACTIONS}){
+
+export default function EditNota({setEditandoNota,notas,nota}){
   const [detail, setDetail] = useState(nota.detail)
   const notasCopy = JSON.parse(JSON.stringify(notas))
   const notaAModificar = notasCopy.find(({id}) => nota.id === id)
+  const [, dispatch] = useContext(NotasContext)
 
   const handleSubmit = () =>{
     notaAModificar.detail = detail

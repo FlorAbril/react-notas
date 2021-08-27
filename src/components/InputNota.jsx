@@ -9,7 +9,7 @@ export default function InputNota(){
   const [detail, setDetail] = useState('')
   const [escribiendo, setEscribiendo] = useState(false)
 
-  const {dispatch} = useContext(NotasContext)
+  const [,dispatch]= useContext(NotasContext)
  
  
   const crearNota = (detail) => {

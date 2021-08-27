@@ -9,7 +9,7 @@ import EditNota from "./EditNota";
 export default function Nota({nota}){
   const [editandoNota, setEditandoNota] = useState(false)
   const {detail,id} = nota
-  const {notas,dispatch} = useContext(NotasContext)
+  const [notas, dispatch] = useContext(NotasContext)
 
 
   const handleBorrar = () =>{

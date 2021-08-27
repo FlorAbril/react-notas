@@ -6,7 +6,7 @@ import NotasContext from "./contexts/NotasContext";
 
 
 function App() {
-  const {notas} = useContext(NotasContext)
+  const [notas] = useContext(NotasContext)
   
   // useEffect(()=>{
   //   localStorage.setItem('notas',JSON.stringify(notas))
