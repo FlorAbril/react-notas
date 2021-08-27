@@ -17,6 +17,8 @@ export default function Nota({nota}){
     localStorage.removeItem(id)
   }
 
+  const filteredDetail = detail.split('\n')
+
   return (
     <>
       {editandoNota ? 
@@ -26,7 +28,7 @@ export default function Nota({nota}){
         </li> 
         : 
         <li key={id}>
-          <p>{detail}</p>
+          <p>{ filteredDetail.map((l) => <>{l} <br></br> </>) }</p>
 
           <div className='div-icons'>
             <div 
