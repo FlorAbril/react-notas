@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import NotasContext from "../contexts/NotasContext";
 import { ACTIONS } from "../notasReducer";
 import BotonIcon from "./BotonIcon";
 import EditNota from "./EditNota";
 
 
 
-export default function Nota({notas,nota,dispatch}){
+export default function Nota({nota}){
   const [editandoNota, setEditandoNota] = useState(false)
   const {detail,id} = nota
+  const {notas,dispatch} = useContext(NotasContext)
+
 
   const handleBorrar = () =>{
     dispatch({ type:ACTIONS.borrar, payload:id })
@@ -25,14 +28,14 @@ export default function Nota({notas,nota,dispatch}){
         <li key={id}>
           <p>{detail}</p>
 
-          <div className='div-btn'>
+          <div className='div-icons'>
             <div 
               onClick={()=>handleBorrar()}>
-              <BotonIcon tipo='borrar' width='1.5em' height='auto'/>
+              <BotonIcon tipo='borrar' width='1.5em' />
             </div>
 
             <div onClick={()=>setEditandoNota(!editandoNota)}>
-              <BotonIcon tipo='editar' width='1.5em' height='auto'/>
+              <BotonIcon tipo='editar' width='1.5em' />
             </div>
           </div>
 

@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import BotonIcon from './BotonIcon'
 import { ACTIONS } from '../notasReducer'
+import NotasContext from '../contexts/NotasContext'
 
 
-export default function InputNota({dispatch}){
+export default function InputNota(){
   const [detail, setDetail] = useState('')
   const [escribiendo, setEscribiendo] = useState(false)
+
+  const {dispatch} = useContext(NotasContext)
+ 
  
   const crearNota = (detail) => {
     const id = Math.floor(Math.random()*Number.MAX_SAFE_INTEGER) 
@@ -43,8 +47,8 @@ export default function InputNota({dispatch}){
           <div className='nueva-nota'
             onClick={()=>setEscribiendo(true)}>
 
-            <BotonIcon tipo='añadir' width='1.5em' height='auto'/>
-            <label style={{'vertical-align': 'top'}}> Añadir nota</label>
+            <BotonIcon tipo='añadir' width='1.5em' />
+            <label style={{'verticalAlign': 'top'}}> Añadir nota</label>
 
           </div>
         
